@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">RedFort Security</title>
+  <desc id="desc">Cyber due diligence and digital risk intelligence</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a" />
+      <stop offset="1" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f87171" stop-opacity="0.9" />
+      <stop offset="1" stop-color="#ef4444" stop-opacity="0.9" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)" rx="24" />
+
+  <rect x="80" y="120" width="360" height="360" fill="url(#accent)" opacity="0.14" rx="36" />
+  <rect x="200" y="260" width="780" height="170" fill="#111827" opacity="0.75" rx="22" />
+
+  <circle cx="1040" cy="170" r="120" fill="#ef4444" opacity="0.08" />
+  <circle cx="1040" cy="470" r="80" fill="#f87171" opacity="0.12" />
+
+  <g fill="#f9fafb">
+    <text x="200" y="250" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif" font-size="52" font-weight="700">
+      RedFort Security
+    </text>
+    <text x="200" y="320" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif" font-size="30" font-weight="500" fill="#e5e7eb">
+      Cyber due diligence y visibilidad del riesgo digital
+    </text>
+    <text x="200" y="380" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif" font-size="22" fill="#d1d5db">
+      Evaluamos leaks, dominios lookalike y exposicion antes de tu operacion.
+    </text>
+  </g>
+
+  <rect x="200" y="410" width="280" height="4" fill="#f87171" rx="2" />
+</svg>
