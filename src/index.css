@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,101 +8,100 @@
    All colors in HSL format
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 @layer base {
   :root {
-    /* Core backgrounds - deep dark with red undertone */
-    --background: 0 20% 8%;
-    --foreground: 0 0% 98%;
+    /* Core backgrounds - black/white from palette */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
 
-    /* Cards/surfaces - slightly elevated */
-    --card: 0 15% 12%;
-    --card-foreground: 0 0% 98%;
+    /* Cards/surfaces - light pink base used with opacity */
+    --card: 9 83% 89%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 0 15% 12%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 9 83% 89%;
+    --popover-foreground: 0 0% 100%;
 
-    /* Primary - deep burgundy/maroon */
-    --primary: 0 65% 35%;
-    --primary-foreground: 0 0% 98%;
+    /* Primary - deep burgundy */
+    --primary: 352 83% 28%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Accent - bright coral red for CTAs */
-    --accent: 5 85% 55%;
-    --accent-foreground: 0 0% 98%;
+    /* Accent - vivid red */
+    --accent: 5 80% 57%;
+    --accent-foreground: 0 0% 100%;
 
-    /* Secondary - muted dark surface */
-    --secondary: 0 10% 15%;
-    --secondary-foreground: 0 0% 85%;
+    /* Secondary - deep red surface */
+    --secondary: 352 83% 28%;
+    --secondary-foreground: 0 0% 100%;
 
     /* Muted elements */
-    --muted: 0 10% 18%;
-    --muted-foreground: 0 0% 65%;
+    --muted: 9 83% 89%;
+    --muted-foreground: 0 0% 100%;
 
-    /* Destructive - error states */
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
+    /* Destructive - match accent */
+    --destructive: 5 80% 57%;
+    --destructive-foreground: 0 0% 100%;
 
     /* Borders and inputs */
-    --border: 0 20% 20%;
-    --input: 0 15% 18%;
-    --ring: 5 85% 55%;
+    --border: 9 83% 89%;
+    --input: 9 83% 89%;
+    --ring: 5 80% 57%;
 
     --radius: 0.5rem;
 
     /* Custom design tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(0 65% 35%) 0%, hsl(350 70% 25%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(5 85% 55%) 0%, hsl(0 75% 45%) 100%);
-    --gradient-dark: linear-gradient(180deg, hsl(0 20% 8%) 0%, hsl(0 15% 5%) 100%);
-    --gradient-glow: radial-gradient(ellipse at center, hsl(0 65% 35% / 0.15) 0%, transparent 70%);
+    --gradient-primary: linear-gradient(135deg, hsl(352 83% 28%) 0%, hsl(5 80% 57%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(5 80% 57%) 0%, hsl(352 83% 28%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(0 0% 0%) 0%, hsl(352 83% 28%) 100%);
+    --gradient-glow: radial-gradient(ellipse at center, hsl(5 80% 57% / 0.2) 0%, transparent 70%);
     
-    --shadow-glow: 0 0 60px hsl(0 65% 35% / 0.3);
-    --shadow-accent: 0 4px 30px hsl(5 85% 55% / 0.3);
-    --shadow-card: 0 10px 40px hsl(0 0% 0% / 0.3);
+    --shadow-glow: 0 0 60px hsl(352 83% 28% / 0.35);
+    --shadow-accent: 0 4px 30px hsl(5 80% 57% / 0.35);
+    --shadow-card: 0 10px 40px hsl(0 0% 0% / 0.4);
 
-    /* Geometric accent color - bright red for shapes */
-    --geometric: 5 80% 50%;
+    /* Geometric accent color - vivid red */
+    --geometric: 5 80% 57%;
 
     /* Sidebar variables */
-    --sidebar-background: 0 20% 8%;
-    --sidebar-foreground: 0 0% 85%;
-    --sidebar-primary: 0 65% 35%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 0 10% 15%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 0 20% 20%;
-    --sidebar-ring: 5 85% 55%;
+    --sidebar-background: 0 0% 0%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 352 83% 28%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 352 83% 28%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 9 83% 89%;
+    --sidebar-ring: 5 80% 57%;
   }
 
   .dark {
-    /* Dark mode is the same - this is a dark theme by default */
-    --background: 0 20% 8%;
-    --foreground: 0 0% 98%;
-    --card: 0 15% 12%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 15% 12%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 65% 35%;
-    --primary-foreground: 0 0% 98%;
-    --accent: 5 85% 55%;
-    --accent-foreground: 0 0% 98%;
-    --secondary: 0 10% 15%;
-    --secondary-foreground: 0 0% 85%;
-    --muted: 0 10% 18%;
-    --muted-foreground: 0 0% 65%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 20% 20%;
-    --input: 0 15% 18%;
-    --ring: 5 85% 55%;
-    --sidebar-background: 0 20% 8%;
-    --sidebar-foreground: 0 0% 85%;
-    --sidebar-primary: 0 65% 35%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 0 10% 15%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 0 20% 20%;
-    --sidebar-ring: 5 85% 55%;
+    /* Dark mode matches palette */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 9 83% 89%;
+    --card-foreground: 0 0% 100%;
+    --popover: 9 83% 89%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 352 83% 28%;
+    --primary-foreground: 0 0% 100%;
+    --accent: 5 80% 57%;
+    --accent-foreground: 0 0% 100%;
+    --secondary: 352 83% 28%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 9 83% 89%;
+    --muted-foreground: 0 0% 100%;
+    --destructive: 5 80% 57%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 9 83% 89%;
+    --input: 9 83% 89%;
+    --ring: 5 80% 57%;
+    --sidebar-background: 0 0% 0%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 352 83% 28%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 352 83% 28%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 9 83% 89%;
+    --sidebar-ring: 5 80% 57%;
   }
 }
 
@@ -123,12 +123,12 @@
 @layer utilities {
   /* Geometric accent shapes */
   .geometric-accent {
-    background: linear-gradient(135deg, hsl(var(--geometric)) 0%, hsl(0 70% 40%) 100%);
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
   }
 
   /* Text gradient */
   .text-gradient {
-    background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(0 80% 60%) 100%);
+    background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--primary)) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -145,9 +145,9 @@
 
   /* Glass morphism */
   .glass {
-    background: hsl(0 15% 12% / 0.8);
+    background: hsl(var(--card) / 0.08);
     backdrop-filter: blur(20px);
-    border: 1px solid hsl(0 20% 25% / 0.5);
+    border: 1px solid hsl(var(--card) / 0.18);
   }
 
   /* Animated border gradient */

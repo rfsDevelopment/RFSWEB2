@@ -20,13 +20,13 @@ export const Footer = () => {
             <div className="flex items-center gap-4">
               <a
                 href="https://www.linkedin.com/company/redfort-security"
-                className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-muted-foreground hover:text-accent hover:bg-accent/10 transition-colors"
+                className="w-10 h-10 rounded-lg bg-card/10 border border-border/20 flex items-center justify-center text-accent hover:text-accent-foreground hover:bg-accent transition-colors"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
               <a
                 href="mailto:info@redfort.security"
-                className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-muted-foreground hover:text-accent hover:bg-accent/10 transition-colors"
+                className="w-10 h-10 rounded-lg bg-card/10 border border-border/20 flex items-center justify-center text-accent hover:text-accent-foreground hover:bg-accent transition-colors"
               >
                 <Mail className="w-5 h-5" />
               </a>

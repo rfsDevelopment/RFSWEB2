@@ -56,7 +56,7 @@ export const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
+            className="text-lg md:text-xl text-white max-w-2xl mx-auto mb-10"
           >
             Due diligence de ciberseguridad para M&A y business angels. Descubre la exposición digital real del target y
             negocia con datos antes de cerrar.

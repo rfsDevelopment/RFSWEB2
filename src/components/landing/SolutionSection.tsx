@@ -41,7 +41,7 @@ export const SolutionSection = () => {
   return (
     <section id="solution" className="py-24 relative overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-card/30 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
 
       <div className="container mx-auto px-6 relative z-10" ref={ref}>
         <motion.div
@@ -60,11 +60,11 @@ export const SolutionSection = () => {
         </motion.div>
 
         <div className="max-w-4xl mx-auto">
-          <div className="relative">
+          <div className="relative isolate">
             {/* Connecting line */}
-            <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-accent/50 via-accent/20 to-transparent hidden md:block" />
+            <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-accent/50 via-accent/20 to-transparent hidden md:block -z-10" />
 
-            <div className="space-y-8">
+            <div className="space-y-8 relative z-10">
               {steps.map((step, index) => (
                 <motion.div
                   key={step.title}
@@ -75,7 +75,7 @@ export const SolutionSection = () => {
                 >
                   {/* Step indicator */}
                   <div className="relative z-10 flex-shrink-0">
-                    <div className="w-16 h-16 rounded-2xl bg-card border border-border group-hover:border-accent/30 flex items-center justify-center transition-colors">
+                    <div className="w-16 h-16 rounded-2xl bg-background border border-border/30 group-hover:border-accent/30 flex items-center justify-center transition-colors">
                       <step.icon className="w-7 h-7 text-accent" />
                     </div>
                   </div>

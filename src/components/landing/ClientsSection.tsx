@@ -57,7 +57,7 @@ export const ClientsSection = () => {
               transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
               className="group"
             >
-              <div className="h-full p-6 rounded-2xl bg-card border border-border hover:border-accent/30 transition-all duration-300 text-center">
+              <div className="h-full p-6 rounded-2xl bg-card/10 border border-border/20 hover:border-accent/30 transition-all duration-300 text-center">
                 <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
                   <client.icon className="w-7 h-7 text-accent" />
                 </div>

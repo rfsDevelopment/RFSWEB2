@@ -75,8 +75,8 @@ export const ProductsSection = () => {
               <div
                 className={`h-full p-8 rounded-2xl border transition-all duration-300 ${
                   product.highlighted
-                    ? "bg-card border-accent/30 shadow-lg shadow-accent/10"
-                    : "bg-card border-border hover:border-accent/20"
+                    ? "bg-card/10 border-accent/30 shadow-lg shadow-accent/10"
+                    : "bg-card/10 border-border/20 hover:border-accent/20"
                 }`}
               >
                 {product.highlighted && (
@@ -88,14 +88,8 @@ export const ProductsSection = () => {
                 )}
 
                 <div className="flex items-center gap-4 mb-6">
-                  <div
-                    className={`w-14 h-14 rounded-xl flex items-center justify-center ${
-                      product.highlighted ? "bg-accent/20" : "bg-muted"
-                    }`}
-                  >
-                    <product.icon
-                      className={`w-7 h-7 ${product.highlighted ? "text-accent" : "text-muted-foreground"}`}
-                    />
+                  <div className="w-14 h-14 rounded-xl flex items-center justify-center bg-accent/20">
+                    <product.icon className="w-7 h-7 text-accent" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-foreground">{product.title}</h3>

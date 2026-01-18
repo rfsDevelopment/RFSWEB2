@@ -11,7 +11,7 @@ export const CTASection = () => {
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-background to-background" />
+      <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-background to-background" />
 
       {/* Geometric accent */}
       <div className="absolute bottom-0 right-0 w-96 h-96 overflow-hidden">

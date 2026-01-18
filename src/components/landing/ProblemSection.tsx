@@ -37,7 +37,7 @@ export const ProblemSection = () => {
   return (
     <section id="problem" className="py-24 relative overflow-hidden">
       {/* Background accent */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-card/50 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" />
 
       <div className="container mx-auto px-6 relative z-10" ref={ref}>
         <motion.div
@@ -87,10 +87,10 @@ export const ProblemSection = () => {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="mt-16 max-w-4xl mx-auto"
         >
-          <div className="border-gradient p-8 rounded-2xl">
+          <div className="glass p-8 rounded-2xl border border-transparent hover:border-accent/20 transition-all duration-300">
             <div className="flex items-start gap-4">
-              <div className="p-2 rounded-lg bg-destructive/20 flex-shrink-0">
-                <AlertCircle className="w-5 h-5 text-destructive" />
+              <div className="p-3 rounded-xl bg-accent/10 flex-shrink-0">
+                <AlertCircle className="w-5 h-5 text-accent" />
               </div>
               <div>
                 <h4 className="text-lg font-semibold text-foreground mb-2">Caso real: adquisición con sorpresa</h4>
