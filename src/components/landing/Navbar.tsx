@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/contexts/LocaleContext";
 import { Menu, X, Shield } from "lucide-react";
 
-const navLinks = [
-  { href: "#products", label: "Productos" },
-  { href: "#solution", label: "Cómo funciona" },
-  { href: "/formaciones#faq-para-quien", label: "Para quién" },
-  { href: "#contact", label: "Contacto" },
-];
-
 export const Navbar = () => {
+  const { locale } = useLocale();
+  const isEn = locale === "en";
+  const navLinks = [
+    { href: "#products", label: isEn ? "Products" : "Productos" },
+    { href: "#solution", label: isEn ? "How it works" : "Cómo funciona" },
+    { href: "/formaciones#faq-para-quien", label: isEn ? "Who it's for" : "Para quién" },
+    { href: "#contact", label: isEn ? "Contact" : "Contacto" },
+  ];
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -45,7 +47,7 @@ export const Navbar = () => {
               </a>
             ))}
             <Button variant="hero" size="default" asChild>
-              <a href="#contact">Agendar llamada</a>
+              <a href="#contact">{isEn ? "Schedule a call" : "Agendar llamada"}</a>
             </Button>
           </div>
 
@@ -81,7 +83,7 @@ export const Navbar = () => {
                   </a>
                 ))}
                 <Button variant="hero" size="lg" className="mt-2" asChild>
-                  <a href="#contact">Agendar llamada</a>
+                  <a href="#contact">{isEn ? "Schedule a call" : "Agendar llamada"}</a>
                 </Button>
               </div>
             </motion.div>

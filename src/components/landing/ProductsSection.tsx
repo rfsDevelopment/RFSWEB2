@@ -2,46 +2,68 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/contexts/LocaleContext";
 import { Users, Building2, ArrowRight, Check } from "lucide-react";
 
-const products = [
-  {
-    icon: Building2,
-    title: "Cyber Due Diligence",
-    subtitle: "Evaluación pre-inversión",
-    description:
-      "Análisis exhaustivo de la exposición digital de una empresa target antes de una adquisición o inversión ángel. Identifica riesgos ocultos que afectan la valoración.",
-    features: [
-      "Credenciales filtradas de empleados",
-      "Exposición en dark web y foros",
-      "Dominios lookalike y suplantación",
-      "Infraestructura expuesta públicamente",
-      "Histórico de brechas e incidentes",
-      "Informe ejecutivo con evidencia",
-    ],
-    cta: "Ideal para M&A, private equity y business angels",
-    highlighted: true,
-  },
-  {
-    icon: Users,
-    title: "Employee Footprint Monitor",
-    subtitle: "Monitorización continua",
-    description:
-      "Vigilancia permanente de la huella digital de los empleados clave de una organización. Detecta exposiciones antes de que se conviertan en incidentes.",
-    features: [
-      "Monitorización 24/7 de credenciales",
-      "Alertas en tiempo real",
-      "Dashboard con scoring de riesgo",
-      "Cobertura de dark web y leaks",
-      "Recomendaciones de mitigación",
-      "Reporting periódico automatizado",
-    ],
-    cta: "Ideal para CTOs y CISOs",
-    highlighted: false,
-  },
-];
-
 export const ProductsSection = () => {
+  const { locale } = useLocale();
+  const isEn = locale === "en";
+  const products = [
+    {
+      icon: Building2,
+      title: "Cyber Due Diligence",
+      subtitle: isEn ? "Pre-investment assessment" : "Evaluación pre-inversión",
+      description: isEn
+        ? "In-depth analysis of a target's digital exposure before an acquisition or angel investment. Identify hidden risks that affect valuation."
+        : "Análisis exhaustivo de la exposición digital de una empresa target antes de una adquisición o inversión ángel. Identifica riesgos ocultos que afectan la valoración.",
+      features: isEn
+        ? [
+            "Leaked employee credentials",
+            "Exposure on dark web and forums",
+            "Lookalike domains and impersonation",
+            "Publicly exposed infrastructure",
+            "History of breaches and incidents",
+            "Executive report with evidence",
+          ]
+        : [
+            "Credenciales filtradas de empleados",
+            "Exposición en dark web y foros",
+            "Dominios lookalike y suplantación",
+            "Infraestructura expuesta públicamente",
+            "Histórico de brechas e incidentes",
+            "Informe ejecutivo con evidencia",
+          ],
+      cta: isEn ? "Ideal for M&A, private equity, and business angels" : "Ideal para M&A, private equity y business angels",
+      highlighted: true,
+    },
+    {
+      icon: Users,
+      title: "Employee Footprint Monitor",
+      subtitle: isEn ? "Continuous monitoring" : "Monitorización continua",
+      description: isEn
+        ? "Ongoing monitoring of key employees' digital footprint. Detect exposures before they become incidents."
+        : "Vigilancia permanente de la huella digital de los empleados clave de una organización. Detecta exposiciones antes de que se conviertan en incidentes.",
+      features: isEn
+        ? [
+            "24/7 credential monitoring",
+            "Real-time alerts",
+            "Risk scoring dashboard",
+            "Dark web and leak coverage",
+            "Mitigation recommendations",
+            "Automated periodic reporting",
+          ]
+        : [
+            "Monitorización 24/7 de credenciales",
+            "Alertas en tiempo real",
+            "Dashboard con scoring de riesgo",
+            "Cobertura de dark web y leaks",
+            "Recomendaciones de mitigación",
+            "Reporting periódico automatizado",
+          ],
+      cta: isEn ? "Ideal for CTOs and CISOs" : "Ideal para CTOs y CISOs",
+      highlighted: false,
+    },
+  ];
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -54,12 +76,17 @@ export const ProductsSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="text-accent text-sm font-semibold uppercase tracking-wider">Productos</span>
+          <span className="text-accent text-sm font-semibold uppercase tracking-wider">
+            {isEn ? "Products" : "Productos"}
+          </span>
           <h2 className="text-3xl md:text-5xl font-bold text-foreground mt-4 mb-6">
-            Dos soluciones, <span className="text-gradient">un objetivo</span>
+            {isEn ? "Two solutions, " : "Dos soluciones, "}
+            <span className="text-gradient">{isEn ? "one goal" : "un objetivo"}</span>
           </h2>
           <p className="text-muted-foreground text-lg">
-            Protección antes de invertir y protección continua después. Elige la solución que se adapta a tu momento.
+            {isEn
+              ? "Protection before investing and continuous protection after. Choose the solution that fits your moment."
+              : "Protección antes de invertir y protección continua después. Elige la solución que se adapta a tu momento."}
           </p>
         </motion.div>
 
@@ -82,7 +109,7 @@ export const ProductsSection = () => {
                 {product.highlighted && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                     <span className="px-4 py-1 rounded-full bg-accent text-accent-foreground text-xs font-semibold">
-                      Más popular
+                      {isEn ? "Most popular" : "Más popular"}
                     </span>
                   </div>
                 )}
@@ -116,7 +143,7 @@ export const ProductsSection = () => {
                   <p className="text-xs text-muted-foreground mb-4">{product.cta}</p>
                   <Button variant={product.highlighted ? "hero" : "heroOutline"} className="w-full group/btn" asChild>
                     <a href="#contact">
-                      Solicitar información
+                      {isEn ? "Request information" : "Solicitar información"}
                       <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                     </a>
                   </Button>

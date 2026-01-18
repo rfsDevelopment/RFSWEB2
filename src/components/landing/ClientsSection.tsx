@@ -1,32 +1,42 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { useLocale } from "@/contexts/LocaleContext";
 import { TrendingUp, Building2, Briefcase, Shield } from "lucide-react";
 
-const clientTypes = [
-  {
-    icon: TrendingUp,
-    title: "Venture Capital",
-    description: "Evalúa el riesgo cyber de startups antes de invertir en rondas seed, Serie A o posteriores.",
-  },
-  {
-    icon: Building2,
-    title: "M&A y Private Equity",
-    description: "Due diligence de ciberseguridad como parte del proceso de adquisición de empresas.",
-  },
-  {
-    icon: Briefcase,
-    title: "Business Angels",
-    description: "Protege tu inversión con visibilidad sobre la exposición digital del equipo fundador y la empresa.",
-  },
-  {
-    icon: Shield,
-    title: "CTOs y CISOs",
-    description: "Evalúa la postura de seguridad externa de tu propia organización antes de que lo haga un atacante.",
-  },
-];
-
 export const ClientsSection = () => {
+  const { locale } = useLocale();
+  const isEn = locale === "en";
+  const clientTypes = [
+    {
+      icon: TrendingUp,
+      title: "Venture Capital",
+      description: isEn
+        ? "Assess cyber risk in startups before investing in seed, Series A, or later rounds."
+        : "Evalúa el riesgo cyber de startups antes de invertir en rondas seed, Serie A o posteriores.",
+    },
+    {
+      icon: Building2,
+      title: "M&A y Private Equity",
+      description: isEn
+        ? "Cybersecurity due diligence as part of the company acquisition process."
+        : "Due diligence de ciberseguridad como parte del proceso de adquisición de empresas.",
+    },
+    {
+      icon: Briefcase,
+      title: "Business Angels",
+      description: isEn
+        ? "Protect your investment with visibility into the founding team's digital exposure."
+        : "Protege tu inversión con visibilidad sobre la exposición digital del equipo fundador y la empresa.",
+    },
+    {
+      icon: Shield,
+      title: "CTOs y CISOs",
+      description: isEn
+        ? "Assess your organization's external security posture before an attacker does."
+        : "Evalúa la postura de seguridad externa de tu propia organización antes de que lo haga un atacante.",
+    },
+  ];
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -39,12 +49,17 @@ export const ClientsSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="text-accent text-sm font-semibold uppercase tracking-wider">¿Para quién?</span>
+          <span className="text-accent text-sm font-semibold uppercase tracking-wider">
+            {isEn ? "Who it's for" : "¿Para quién?"}
+          </span>
           <h2 className="text-3xl md:text-5xl font-bold text-foreground mt-4 mb-6">
-            Decisiones de inversión y adquisición <span className="text-gradient">mejor informadas</span>
+            {isEn ? "Investment and acquisition decisions " : "Decisiones de inversión y adquisición "}
+            <span className="text-gradient">{isEn ? "better informed" : "mejor informadas"}</span>
           </h2>
           <p className="text-muted-foreground text-lg">
-            Ayudamos a inversores y equipos de liderazgo técnico a entender el riesgo cyber antes de que se convierta en un problema.
+            {isEn
+              ? "We help investors and technical leaders understand cyber risk before it becomes a problem."
+              : "Ayudamos a inversores y equipos de liderazgo técnico a entender el riesgo cyber antes de que se convierta en un problema."}
           </p>
         </motion.div>
 
@@ -77,8 +92,9 @@ export const ClientsSection = () => {
         >
           <blockquote className="glass p-8 rounded-2xl">
             <p className="text-lg text-foreground italic mb-4">
-              "La ciberseguridad ya no es solo un tema técnico; es un factor crítico de valoración. No comprometemos capital ni
-              firmamos sin entender la exposición digital del target."
+              {isEn
+                ? '"Cybersecurity is no longer just a technical topic; it is a critical valuation factor. We do not commit capital or sign without understanding the target\'s digital exposure."'
+                : '"La ciberseguridad ya no es solo un tema técnico; es un factor crítico de valoración. No comprometemos capital ni firmamos sin entender la exposición digital del target."'}
             </p>
             <footer className="text-sm text-muted-foreground">- Socio, fondo de venture capital</footer>
           </blockquote>

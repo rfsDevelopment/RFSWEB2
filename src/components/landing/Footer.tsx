@@ -1,6 +1,9 @@
 import { Shield, Mail, MapPin, Linkedin } from "lucide-react";
+import { useLocale } from "@/contexts/LocaleContext";
 
 export const Footer = () => {
+  const { locale } = useLocale();
+  const isEn = locale === "en";
   return (
     <footer className="py-16 border-t border-border">
       <div className="container mx-auto px-6">
@@ -14,8 +17,9 @@ export const Footer = () => {
               </span>
             </a>
             <p className="text-muted-foreground text-sm max-w-sm mb-6">
-              Cyber Due Diligence para M&A y business angels. Evaluamos la exposición digital de empresas antes de invertir o
-              adquirir, y como auditoría interna.
+              {isEn
+                ? "Cyber Due Diligence for M&A and business angels. We evaluate companies' digital exposure before investing or acquiring, and as internal audit."
+                : "Cyber Due Diligence para M&A y business angels. Evaluamos la exposición digital de empresas antes de invertir o adquirir, y como auditoría interna."}
             </p>
             <div className="flex items-center gap-4">
               <a
@@ -35,9 +39,12 @@ export const Footer = () => {
 
           {/* Links */}
           <div>
-            <h4 className="font-semibold text-foreground mb-4">Servicios</h4>
+            <h4 className="font-semibold text-foreground mb-4">{isEn ? "Services" : "Servicios"}</h4>
             <ul className="space-y-3">
-              {["Cyber Due Diligence", "Employee Footprint Monitor", "Informe Ejecutivo", "Consultoría"].map((item) => (
+              {(isEn
+                ? ["Cyber Due Diligence", "Employee Footprint Monitor", "Executive Report", "Consulting"]
+                : ["Cyber Due Diligence", "Employee Footprint Monitor", "Informe Ejecutivo", "Consultoría"]
+              ).map((item) => (
                 <li key={item}>
                   <a
                     href="#products"
@@ -52,7 +59,7 @@ export const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h4 className="font-semibold text-foreground mb-4">Contacto</h4>
+            <h4 className="font-semibold text-foreground mb-4">{isEn ? "Contact" : "Contacto"}</h4>
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-muted-foreground text-sm">
                 <Mail className="w-4 h-4 mt-0.5 flex-shrink-0" />
@@ -60,7 +67,7 @@ export const Footer = () => {
               </li>
               <li className="flex items-start gap-2 text-muted-foreground text-sm">
                 <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                España
+                {isEn ? "Spain" : "España"}
               </li>
             </ul>
           </div>
@@ -68,19 +75,21 @@ export const Footer = () => {
 
         {/* Bottom */}
         <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-muted-foreground text-sm">© 2025 RedFort Security. Todos los derechos reservados.</p>
+          <p className="text-muted-foreground text-sm">
+            {isEn ? "© 2025 RedFort Security. All rights reserved." : "© 2025 RedFort Security. Todos los derechos reservados."}
+          </p>
           <div className="flex items-center gap-6 text-sm">
             <a
               href="mailto:legal@redfort.security?subject=Politica%20de%20privacidad"
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              Política de privacidad
+              {isEn ? "Privacy policy" : "Política de privacidad"}
             </a>
             <a
               href="mailto:legal@redfort.security?subject=Terminos%20de%20servicio"
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              Términos de servicio
+              {isEn ? "Terms of service" : "Términos de servicio"}
             </a>
           </div>
         </div>

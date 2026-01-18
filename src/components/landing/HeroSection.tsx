@@ -1,8 +1,27 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/contexts/LocaleContext";
 import { Shield, ArrowRight, TrendingUp, Search } from "lucide-react";
 
 export const HeroSection = () => {
+  const { locale } = useLocale();
+  const isEn = locale === "en";
+  const badgeText = isEn
+    ? "Cyber Due Diligence for M&A and Business Angels"
+    : "Cyber Due Diligence para M&A y Business Angels";
+  const titleLine1 = isEn ? "Assess the" : "Evalúa el";
+  const titleLine2 = isEn ? "cyber risk" : "riesgo cyber";
+  const titleLine3 = isEn ? "before signing the deal" : "antes de firmar la operación";
+  const subheadline = isEn
+    ? "Cybersecurity due diligence for M&A and business angels. Discover the target's real digital exposure and negotiate with data before closing."
+    : "Due diligence de ciberseguridad para M&A y business angels. Descubre la exposición digital real del target y negocia con datos antes de cerrar.";
+  const ctaPrimary = isEn ? "Schedule a call" : "Agendar llamada";
+  const ctaSecondary = isEn ? "See sample report" : "Ver informe de ejemplo";
+  const stats = [
+    { icon: Search, value: "OSINT + Dark Web", label: isEn ? "In-depth analysis" : "Análisis exhaustivo" },
+    { icon: TrendingUp, value: isEn ? "Before closing" : "Antes del cierre", label: isEn ? "Informed decision" : "Decisión informada" },
+    { icon: Shield, value: isEn ? "Verifiable evidence" : "Evidencia verificable", label: isEn ? "Auditable reports" : "Reportes auditables" },
+  ];
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background Elements */}
@@ -35,7 +54,7 @@ export const HeroSection = () => {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-accent/30 bg-accent/10 mb-8"
           >
             <TrendingUp className="w-4 h-4 text-accent" />
-            <span className="text-sm text-accent font-medium">Cyber Due Diligence para M&A y Business Angels</span>
+            <span className="text-sm text-accent font-medium">{badgeText}</span>
           </motion.div>
 
           {/* Main Headline */}
@@ -45,10 +64,10 @@ export const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight mb-6"
           >
-            Evalúa el{" "}
-            <span className="text-gradient">riesgo cyber</span>
+            {titleLine1}{" "}
+            <span className="text-gradient">{titleLine2}</span>
             <br />
-            antes de firmar la operación
+            {titleLine3}
           </motion.h1>
 
           {/* Subheadline */}
@@ -58,8 +77,7 @@ export const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg md:text-xl text-white max-w-2xl mx-auto mb-10"
           >
-            Due diligence de ciberseguridad para M&A y business angels. Descubre la exposición digital real del target y
-            negocia con datos antes de cerrar.
+            {subheadline}
           </motion.p>
 
           {/* CTAs */}
@@ -71,12 +89,12 @@ export const HeroSection = () => {
           >
             <Button variant="hero" size="xl" className="group" asChild>
               <a href="#contact">
-                Agendar llamada
+                {ctaPrimary}
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
               </a>
             </Button>
             <Button variant="heroOutline" size="xl" asChild>
-              <a href="mailto:info@redfort.security?subject=Ver%20informe%20de%20ejemplo">Ver informe de ejemplo</a>
+              <a href="mailto:info@redfort.security?subject=Ver%20informe%20de%20ejemplo">{ctaSecondary}</a>
             </Button>
           </motion.div>
 
@@ -87,11 +105,7 @@ export const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto"
           >
-            {[
-              { icon: Search, value: "OSINT + Dark Web", label: "Análisis exhaustivo" },
-              { icon: TrendingUp, value: "Antes del cierre", label: "Decisión informada" },
-              { icon: Shield, value: "Evidencia verificable", label: "Reportes auditables" },
-            ].map((stat, index) => (
+            {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
                 initial={{ opacity: 0, scale: 0.9 }}

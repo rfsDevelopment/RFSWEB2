@@ -1,40 +1,46 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { useLocale } from "@/contexts/LocaleContext";
 import { FileSearch, Database, FileText, Shield } from "lucide-react";
 
-const steps = [
-  {
-    icon: FileSearch,
-    step: "01",
-    title: "Análisis OSINT profundo",
-    description:
-      "Recopilamos información de fuentes abiertas, dark web, foros y bases de datos de brechas para mapear la exposición digital completa.",
-  },
-  {
-    icon: Database,
-    step: "02",
-    title: "Correlación e inteligencia",
-    description:
-      "Modelos de IA correlacionan hallazgos, validan atribución y evalúan criticidad según contexto y potencial impacto.",
-  },
-  {
-    icon: FileText,
-    step: "03",
-    title: "Informe ejecutivo",
-    description:
-      "Entregamos un informe estructurado con hallazgos priorizados, evidencias documentadas y recomendaciones accionables.",
-  },
-  {
-    icon: Shield,
-    step: "04",
-    title: "Decisión informada",
-    description:
-      "Con visibilidad completa del riesgo cyber, puedes negociar mejor, ajustar valoración o establecer condiciones de cierre.",
-  },
-];
-
 export const SolutionSection = () => {
+  const { locale } = useLocale();
+  const isEn = locale === "en";
+  const steps = [
+    {
+      icon: FileSearch,
+      step: "01",
+      title: isEn ? "In-depth OSINT analysis" : "Análisis OSINT profundo",
+      description: isEn
+        ? "We gather open-source intelligence, dark web, forums, and breach databases to map complete digital exposure."
+        : "Recopilamos información de fuentes abiertas, dark web, foros y bases de datos de brechas para mapear la exposición digital completa.",
+    },
+    {
+      icon: Database,
+      step: "02",
+      title: isEn ? "Correlation and intelligence" : "Correlación e inteligencia",
+      description: isEn
+        ? "AI models correlate findings, validate attribution, and assess criticality by context and impact."
+        : "Modelos de IA correlacionan hallazgos, validan atribución y evalúan criticidad según contexto y potencial impacto.",
+    },
+    {
+      icon: FileText,
+      step: "03",
+      title: isEn ? "Executive report" : "Informe ejecutivo",
+      description: isEn
+        ? "We deliver a structured report with prioritized findings, documented evidence, and actionable recommendations."
+        : "Entregamos un informe estructurado con hallazgos priorizados, evidencias documentadas y recomendaciones accionables.",
+    },
+    {
+      icon: Shield,
+      step: "04",
+      title: isEn ? "Informed decision" : "Decisión informada",
+      description: isEn
+        ? "With full risk visibility, you can negotiate better, adjust valuation, or set closing conditions."
+        : "Con visibilidad completa del riesgo cyber, puedes negociar mejor, ajustar valoración o establecer condiciones de cierre.",
+    },
+  ];
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -50,12 +56,17 @@ export const SolutionSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="text-accent text-sm font-semibold uppercase tracking-wider">Cómo funciona</span>
+          <span className="text-accent text-sm font-semibold uppercase tracking-wider">
+            {isEn ? "How it works" : "Cómo funciona"}
+          </span>
           <h2 className="text-3xl md:text-5xl font-bold text-foreground mt-4 mb-6">
-            De la oscuridad a la <span className="text-gradient">claridad</span>
+            {isEn ? "From darkness to " : "De la oscuridad a la "}
+            <span className="text-gradient">{isEn ? "clarity" : "claridad"}</span>
           </h2>
           <p className="text-muted-foreground text-lg">
-            Un proceso estructurado que transforma datos dispersos en inteligencia accionable para tu decisión de inversión o adquisición.
+            {isEn
+              ? "A structured process that turns scattered data into actionable intelligence for your investment or acquisition decision."
+              : "Un proceso estructurado que transforma datos dispersos en inteligencia accionable para tu decisión de inversión o adquisición."}
           </p>
         </motion.div>
 

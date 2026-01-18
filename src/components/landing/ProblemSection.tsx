@@ -1,36 +1,51 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { useLocale } from "@/contexts/LocaleContext";
 import { AlertCircle, FileWarning, TrendingDown, Scale } from "lucide-react";
 
-const problems = [
-  {
-    icon: FileWarning,
-    title: "Pasivos ocultos de ciberseguridad",
-    description:
-      "Brechas pasadas, credenciales filtradas y exposiciones no documentadas que se convierten en pasivos tras la adquisición.",
-  },
-  {
-    icon: TrendingDown,
-    title: "Valoración incorrecta del riesgo",
-    description:
-      "Sin una evaluación de exposición digital, el precio de la operación no refleja el verdadero perfil de riesgo de la empresa.",
-  },
-  {
-    icon: AlertCircle,
-    title: "Sorpresas post-cierre",
-    description:
-      "Incidentes de seguridad heredados que emergen después de la adquisición, afectando la integración y el valor de la inversión.",
-  },
-  {
-    icon: Scale,
-    title: "Due diligence incompleta",
-    description:
-      "La auditoría financiera y legal es estándar, pero la evaluación de ciberseguridad externa suele quedar fuera del alcance.",
-  },
-];
-
 export const ProblemSection = () => {
+  const { locale } = useLocale();
+  const isEn = locale === "en";
+  const problems = [
+    {
+      icon: FileWarning,
+      title: isEn ? "Hidden cybersecurity liabilities" : "Pasivos ocultos de ciberseguridad",
+      description: isEn
+        ? "Past breaches, leaked credentials, and undocumented exposures become liabilities after acquisition."
+        : "Brechas pasadas, credenciales filtradas y exposiciones no documentadas que se convierten en pasivos tras la adquisición.",
+    },
+    {
+      icon: TrendingDown,
+      title: isEn ? "Incorrect risk valuation" : "Valoración incorrecta del riesgo",
+      description: isEn
+        ? "Without a digital exposure assessment, the deal price fails to reflect the company's true risk profile."
+        : "Sin una evaluación de exposición digital, el precio de la operación no refleja el verdadero perfil de riesgo de la empresa.",
+    },
+    {
+      icon: AlertCircle,
+      title: isEn ? "Post-close surprises" : "Sorpresas post-cierre",
+      description: isEn
+        ? "Inherited security incidents emerge after acquisition, affecting integration and investment value."
+        : "Incidentes de seguridad heredados que emergen después de la adquisición, afectando la integración y el valor de la inversión.",
+    },
+    {
+      icon: Scale,
+      title: isEn ? "Incomplete due diligence" : "Due diligence incompleta",
+      description: isEn
+        ? "Financial and legal audits are standard, but external cybersecurity assessment is often out of scope."
+        : "La auditoría financiera y legal es estándar, pero la evaluación de ciberseguridad externa suele quedar fuera del alcance.",
+    },
+  ];
+  const headingPrefix = isEn ? "The cyber risk you don't see" : "El riesgo cyber que";
+  const headingHighlight = isEn ? "in the data room" : "no ves en el data room";
+  const intro = isEn
+    ? "Traditional due diligence evaluates finance, legal, and operations. But a company's digital exposure (leaked credentials, exposed vulnerabilities, and reputational risks) remains invisible."
+    : "La due diligence tradicional evalúa finanzas, legal y operaciones. Pero la exposición digital de una empresa (credenciales filtradas, vulnerabilidades expuestas y riesgos reputacionales) permanece invisible.";
+  const caseTitle = isEn ? "Real case: acquisition with a surprise" : "Caso real: adquisición con sorpresa";
+  const caseBody = isEn
+    ? "An M&A team closes the purchase of a fintech. Three months later, dark web posts reveal leaked credentials from key employees and unreported production access. The incident triggers a crisis plan, delays integration, and opens price renegotiation. A pre-deal assessment would have detected this exposure."
+    : "Un equipo de M&A cierra la compra de una fintech. Tres meses después aparecen en la dark web credenciales de empleados clave y accesos a sistemas de producción no reportados. El incidente obliga a activar un plan de crisis, retrasa la integración y abre una renegociación del precio. Una evaluación antes de la operación habría detectado esta exposición.";
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -46,13 +61,14 @@ export const ProblemSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="text-accent text-sm font-semibold uppercase tracking-wider">El problema</span>
+          <span className="text-accent text-sm font-semibold uppercase tracking-wider">
+            {isEn ? "The problem" : "El problema"}
+          </span>
           <h2 className="text-3xl md:text-5xl font-bold text-foreground mt-4 mb-6">
-            El riesgo cyber que <span className="text-gradient">no ves en el data room</span>
+            {headingPrefix} <span className="text-gradient">{headingHighlight}</span>
           </h2>
           <p className="text-muted-foreground text-lg">
-            La due diligence tradicional evalúa finanzas, legal y operaciones. Pero la exposición digital de una empresa
-            (credenciales filtradas, vulnerabilidades expuestas y riesgos reputacionales) permanece invisible.
+            {intro}
           </p>
         </motion.div>
 
@@ -93,12 +109,9 @@ export const ProblemSection = () => {
                 <AlertCircle className="w-5 h-5 text-accent" />
               </div>
               <div>
-                <h4 className="text-lg font-semibold text-foreground mb-2">Caso real: adquisición con sorpresa</h4>
+                <h4 className="text-lg font-semibold text-foreground mb-2">{caseTitle}</h4>
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  Un equipo de M&A cierra la compra de una fintech. Tres meses después aparecen en la dark web credenciales de
-                  empleados clave y accesos a sistemas de producción no reportados. El incidente obliga a activar un plan de
-                  crisis, retrasa la integración y abre una renegociación del precio. Una evaluación antes de la operación
-                  habría detectado esta exposición.
+                  {caseBody}
                 </p>
               </div>
             </div>
