@@ -97,8 +97,8 @@ export const ProblemSection = () => {
                 <p className="text-muted-foreground text-sm leading-relaxed">
                   Un equipo de M&A cierra la compra de una fintech. Tres meses después aparecen en la dark web credenciales de
                   empleados clave y accesos a sistemas de producción no reportados. El incidente obliga a activar un plan de
-                  crisis, retrasa la integración y abre una renegociación del precio. Una evaluación antes de la operación habría
-                  detectado esta exposición.
+                  crisis, retrasa la integración y abre una renegociación del precio. Una evaluación antes de la operación
+                  habría detectado esta exposición.
                 </p>
               </div>
             </div>

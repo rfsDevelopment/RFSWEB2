@@ -13,7 +13,7 @@ export const HeroSection = () => {
         initial={{ opacity: 0, x: -100 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1, delay: 0.5 }}
-        className="absolute top-0 left-0 w-80 h-80 overflow-hidden"
+        className="absolute top-0 left-0 w-80 h-80 overflow-hidden hidden md:block"
       >
         <div className="absolute -top-20 -left-20 w-96 h-96 geometric-accent transform rotate-45 opacity-80" />
       </motion.div>

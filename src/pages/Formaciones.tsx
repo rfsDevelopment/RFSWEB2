@@ -1,29 +1,31 @@
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
-import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
 import { Shield, Users, Presentation, ClipboardCheck } from "lucide-react";
 
 const includes = [
   {
     icon: Presentation,
     title: "Formato flexible",
-    description: "Online o presencial, según aplique.",
+    description: "Online o presencial.",
   },
   {
     icon: ClipboardCheck,
     title: "Duración típica",
-    description: "60-90 min, con foco en lo accionable.",
+    description: "Nos adaptamos a tu tiempo y formato.",
   },
   {
     icon: Shield,
     title: "Material de apoyo",
-    description: "Checklist + buenas prácticas + mini guía posterior.",
+    description: "Basado en los últimos ejemplos.",
   },
   {
     icon: Users,
     title: "Nivel pensado para negocio",
-    description: "No técnico, con opción técnica en formaciones a medida.",
+    description: "Pensado para ti.",
   },
 ];
 
@@ -32,22 +34,21 @@ const trainings = [
     title: "Phishing",
     objective: "Reconocer señales y evitar caídas.",
     includes: [
-      "Ejemplos reales",
+      "Guía de detección",
       "Cómo reportar",
       "Buenas prácticas de correo",
       "Ejercicios rápidos",
     ],
-    cta: "Ver temario",
   },
   {
     title: "Suplantación y deepfakes",
     objective: "Detectar intentos de fraude por voz, video o identidad.",
     includes: [
+      "Guía de detección",
       "Casos típicos (CEO fraud)",
       "Verificación por doble canal",
       "Señales de alerta",
     ],
-    cta: "Ver temario",
   },
   {
     title: "Uso seguro de redes sociales",
@@ -58,7 +59,6 @@ const trainings = [
       "Qué no publicar",
       "Pautas para equipos",
     ],
-    cta: "Ver temario",
   },
   {
     title: "Formaciones a medida",
@@ -68,7 +68,7 @@ const trainings = [
       "Ejemplos de su sector",
       "Recomendaciones por proceso",
     ],
-    cta: "Pedir propuesta",
+    highlighted: true,
   },
 ];
 
@@ -92,7 +92,7 @@ const steps = [
 
 const faqs = [
   {
-    value: "faq-1",
+    value: "faq-para-quien",
     question: "¿Para quién es?",
     answer:
       "Para equipos no técnicos, dirección y áreas de negocio. Podemos ajustar la profundidad según el perfil.",
@@ -118,6 +118,15 @@ const faqs = [
 ];
 
 const Formaciones = () => {
+  const location = useLocation();
+  const [openItem, setOpenItem] = useState<string | undefined>(undefined);
+
+  useEffect(() => {
+    if (location.hash === "#faq-para-quien") {
+      setOpenItem("faq-para-quien");
+    }
+  }, [location.hash]);
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -125,6 +134,9 @@ const Formaciones = () => {
       <main className="pt-24">
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 bg-hero-pattern" />
+          <div className="absolute top-0 left-0 w-80 h-80 overflow-hidden hidden md:block">
+            <div className="absolute -top-20 -left-20 w-96 h-96 geometric-accent transform rotate-45 opacity-80" />
+          </div>
           <div className="container mx-auto px-6 relative z-10 py-20">
             <div className="max-w-3xl mx-auto text-center">
               <span className="text-accent text-sm font-semibold uppercase tracking-wider">Formaciones</span>
@@ -165,16 +177,25 @@ const Formaciones = () => {
           <div className="container mx-auto px-6">
             <div className="max-w-3xl mx-auto text-center mb-12">
               <span className="text-accent text-sm font-semibold uppercase tracking-wider">Formaciones</span>
-              <h2 className="text-3xl md:text-5xl font-bold text-foreground mt-4">
-                Programas prácticos para tu equipo
-              </h2>
+              <h2 className="text-3xl md:text-5xl font-bold text-foreground mt-4">Programas de formación</h2>
             </div>
             <div className="grid lg:grid-cols-2 gap-8">
               {trainings.map((training) => (
                 <div
                   key={training.title}
-                  className="bg-card/10 border border-border/20 rounded-2xl p-8 hover:border-accent/30 transition-colors"
+                  className={`relative bg-card/10 border rounded-2xl p-8 transition-colors ${
+                    training.highlighted
+                      ? "border-accent/30 shadow-lg shadow-accent/10"
+                      : "border-border/20 hover:border-accent/30"
+                  }`}
                 >
+                  {training.highlighted && (
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                      <span className="px-4 py-1 rounded-full bg-accent text-accent-foreground text-xs font-semibold">
+                        Más popular
+                      </span>
+                    </div>
+                  )}
                   <div className="flex items-start justify-between gap-4 mb-4">
                     <h3 className="text-2xl font-bold text-foreground">{training.title}</h3>
                   </div>
@@ -216,14 +237,20 @@ const Formaciones = () => {
           </div>
         </section>
 
-        <section className="py-20">
+        <section id="faq-para-quien" className="py-20">
           <div className="container mx-auto px-6">
             <div className="max-w-3xl mx-auto text-center mb-12">
               <span className="text-accent text-sm font-semibold uppercase tracking-wider">FAQ</span>
               <h2 className="text-3xl md:text-5xl font-bold text-foreground mt-4">Preguntas frecuentes</h2>
             </div>
             <div className="max-w-3xl mx-auto bg-card/10 border border-border/20 rounded-2xl p-6">
-              <Accordion type="single" collapsible className="w-full">
+              <Accordion
+                type="single"
+                collapsible
+                value={openItem}
+                onValueChange={setOpenItem}
+                className="w-full"
+              >
                 {faqs.map((faq) => (
                   <AccordionItem key={faq.value} value={faq.value} className="border-border/20">
                     <AccordionTrigger className="text-foreground">{faq.question}</AccordionTrigger>
@@ -246,7 +273,7 @@ const Formaciones = () => {
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Button variant="hero" size="xl" asChild>
-                  <a href="/#contact">Hablar con nosotros</a>
+                  <a href="https://wa.me/34610626409">Contacta con nosotros</a>
                 </Button>
                 <Button variant="heroOutline" size="xl" asChild>
                   <a href="/#products">Ver servicios</a>

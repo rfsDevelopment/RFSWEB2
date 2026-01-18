@@ -5,9 +5,8 @@ import { Menu, X, Shield } from "lucide-react";
 
 const navLinks = [
   { href: "#products", label: "Productos" },
-  { href: "/formaciones", label: "Formaciones" },
   { href: "#solution", label: "Cómo funciona" },
-  { href: "#clients", label: "Para quién" },
+  { href: "/formaciones#faq-para-quien", label: "Para quién" },
   { href: "#contact", label: "Contacto" },
 ];
 
@@ -24,7 +23,7 @@ export const Navbar = () => {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-3 group">
+          <div className="flex items-center gap-3 group">
             <div className="relative">
               <Shield className="w-8 h-8 text-accent transition-transform group-hover:scale-110" />
               <div className="absolute inset-0 bg-accent/20 blur-xl rounded-full" />
@@ -32,7 +31,7 @@ export const Navbar = () => {
             <span className="text-xl font-bold text-foreground">
               RedFort<span className="text-accent">Security</span>
             </span>
-          </a>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
