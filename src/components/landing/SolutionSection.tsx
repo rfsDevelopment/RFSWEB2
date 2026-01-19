@@ -60,8 +60,7 @@ export const SolutionSection = () => {
             {isEn ? "How it works" : "Cómo funciona"}
           </span>
           <h2 className="text-3xl md:text-5xl font-bold text-foreground mt-4 mb-6">
-            {isEn ? "From darkness to " : "De la oscuridad a la "}
-            <span className="text-gradient">{isEn ? "clarity" : "claridad"}</span>
+            {isEn ? "Discover your exposure before they do" : "Descubre tu exposición antes que ellos"}
           </h2>
           <p className="text-muted-foreground text-lg">
             {isEn
