@@ -1,36 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
-  <title id="title">RedFort Security</title>
-  <desc id="desc">Cyber due diligence and digital risk intelligence</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-labelledby="ogtitle ogdesc">
+  <title id="ogtitle">RFS · RedFort Security</title>
+  <desc id="ogdesc">Auditoría de exposición (OSINT) y formación en ciberseguridad</desc>
+
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0f172a" />
-      <stop offset="1" stop-color="#111827" />
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#F5F5F4" fill-opacity="0.11"/>
+    </pattern>
+    <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
     </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#f87171" stop-opacity="0.9" />
-      <stop offset="1" stop-color="#ef4444" stop-opacity="0.9" />
-    </linearGradient>
+    <mask id="fademask">
+      <rect width="1200" height="630" fill="url(#fade)"/>
+    </mask>
   </defs>
 
-  <rect width="1200" height="630" fill="url(#bg)" rx="24" />
+  <rect width="1200" height="630" fill="#08090A"/>
+  <rect width="1200" height="630" fill="url(#dots)" mask="url(#fademask)"/>
+  <rect x="80" y="60" width="1040" height="510" fill="none" stroke="#F5F5F4" stroke-opacity="0.10"/>
 
-  <rect x="80" y="120" width="360" height="360" fill="url(#accent)" opacity="0.14" rx="36" />
-  <rect x="200" y="260" width="780" height="170" fill="#111827" opacity="0.75" rx="22" />
+  <!-- mark -->
+  <rect x="120" y="108" width="46" height="10" fill="#E11021"/>
+  <rect x="120" y="128" width="32" height="10" fill="#F5F5F4"/>
+  <rect x="120" y="148" width="20" height="10" fill="#5E5E63"/>
+  <text x="188" y="144" font-family="'Space Grotesk',Arial,sans-serif" font-size="34" font-weight="700" fill="#F5F5F4">RFS</text>
+  <text x="188" y="164" font-family="'JetBrains Mono',monospace" font-size="12" letter-spacing="3.4" fill="#5E5E63">REDFORT SECURITY</text>
 
-  <circle cx="1040" cy="170" r="120" fill="#ef4444" opacity="0.08" />
-  <circle cx="1040" cy="470" r="80" fill="#f87171" opacity="0.12" />
+  <text x="120" y="330" font-family="'Space Grotesk',Arial,sans-serif" font-size="74" font-weight="700" letter-spacing="-2" fill="#F5F5F4">Te mostramos todo</text>
+  <text x="120" y="412" font-family="'Space Grotesk',Arial,sans-serif" font-size="74" font-weight="700" letter-spacing="-2" fill="#F5F5F4">lo que <tspan fill="#E11021">ya saben de ti</tspan>.</text>
 
-  <g fill="#f9fafb">
-    <text x="200" y="250" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif" font-size="52" font-weight="700">
-      RedFort Security
-    </text>
-    <text x="200" y="320" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif" font-size="30" font-weight="500" fill="#e5e7eb">
-      Cyber due diligence y visibilidad del riesgo digital
-    </text>
-    <text x="200" y="380" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif" font-size="22" fill="#d1d5db">
-      Evaluamos leaks, dominios lookalike y exposicion antes de tu operacion.
-    </text>
-  </g>
-
-  <rect x="200" y="410" width="280" height="4" fill="#f87171" rx="2" />
+  <line x1="120" y1="470" x2="1080" y2="470" stroke="#F5F5F4" stroke-opacity="0.12"/>
+  <text x="120" y="512" font-family="'JetBrains Mono',monospace" font-size="15" letter-spacing="3" fill="#9A9A9E">AUDITORÍA DE EXPOSICIÓN · OSINT</text>
+  <text x="600" y="512" font-family="'JetBrains Mono',monospace" font-size="15" letter-spacing="3" fill="#9A9A9E">FORMACIÓN</text>
+  <text x="880" y="512" font-family="'JetBrains Mono',monospace" font-size="15" letter-spacing="3" fill="#E11021">0 INTRUSIÓN</text>
 </svg>

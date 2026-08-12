@@ -1,3 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-  <path fill="#E94839" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="RFS">
+  <rect width="32" height="32" fill="#08090A"/>
+  <!-- redaction bars: the mark. the top bar is the signal. -->
+  <rect x="6" y="8" width="20" height="4" fill="#E11021"/>
+  <rect x="6" y="15" width="14" height="4" fill="#F5F5F4"/>
+  <rect x="6" y="22" width="9" height="4" fill="#5E5E63"/>
 </svg>

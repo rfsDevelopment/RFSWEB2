@@ -1,25 +1,29 @@
-import { Navbar } from "@/components/landing/Navbar";
-import { HeroSection } from "@/components/landing/HeroSection";
-import { ProblemSection } from "@/components/landing/ProblemSection";
-import { ProductsSection } from "@/components/landing/ProductsSection";
-import { SolutionSection } from "@/components/landing/SolutionSection";
-import { ClientsSection } from "@/components/landing/ClientsSection";
-import { CTASection } from "@/components/landing/CTASection";
-import { Footer } from "@/components/landing/Footer";
+import { Nav } from "@/components/site/Nav";
+import { Hero } from "@/components/site/Hero";
+import { Ticker } from "@/components/site/Ticker";
+import { Thesis } from "@/components/site/Thesis";
+import { Audit } from "@/components/site/Audit";
+import { Training } from "@/components/site/Training";
+import { Method } from "@/components/site/Method";
+import { Faq } from "@/components/site/Faq";
+import { Contact } from "@/components/site/Contact";
+import { Footer } from "@/components/site/Footer";
 
-const Index = () => {
-  return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      <HeroSection />
-      <ProblemSection />
-      <ProductsSection />
-      <SolutionSection />
-      <ClientsSection />
-      <CTASection />
-      <Footer />
-    </div>
-  );
-};
+const Index = () => (
+  <div className="grain min-h-screen bg-void">
+    <Nav />
+    <main>
+      <Hero />
+      <Ticker />
+      <Thesis />
+      <Audit />
+      <Training />
+      <Method />
+      <Faq />
+      <Contact />
+    </main>
+    <Footer />
+  </div>
+);
 
 export default Index;

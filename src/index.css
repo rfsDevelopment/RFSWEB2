@@ -1,197 +1,208 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* RedFort Security Design System
-   Cybersecurity theme with bold reds and dark backgrounds
-   All colors in HSL format
-*/
-
+/* ============================================================================
+   RFS — Industrial-technical design system.  See DESIGN.md.
+   Square geometry, hairline rules, one accent (signal red), grain over flat.
+   ========================================================================== */
 
 @layer base {
   :root {
-    /* Core backgrounds - black/white from palette */
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
+    /* shadcn semantic tokens mapped onto the RFS palette so vendored
+       components in src/components/ui stay visually coherent. */
+    --background: 210 11% 4%; /* void   #08090A */
+    --foreground: 60 5% 96%; /* ink    #F5F5F4 */
 
-    /* Cards/surfaces - light pink base used with opacity */
-    --card: 9 83% 89%;
-    --card-foreground: 0 0% 100%;
+    --card: 220 8% 7%; /* carbon #101113 */
+    --card-foreground: 60 5% 96%;
 
-    --popover: 9 83% 89%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 220 8% 7%;
+    --popover-foreground: 60 5% 96%;
 
-    /* Primary - deep burgundy */
-    --primary: 352 83% 28%;
+    --primary: 356 87% 47%; /* signal #E11021 */
     --primary-foreground: 0 0% 100%;
 
-    /* Accent - vivid red */
-    --accent: 5 80% 57%;
+    --secondary: 220 8% 7%;
+    --secondary-foreground: 60 5% 96%;
+
+    --accent: 356 87% 47%;
     --accent-foreground: 0 0% 100%;
 
-    /* Secondary - deep red surface */
-    --secondary: 352 83% 28%;
-    --secondary-foreground: 0 0% 100%;
+    --muted: 220 8% 10%;
+    --muted-foreground: 240 2% 61%; /* ink-dim #9A9A9E */
 
-    /* Muted elements */
-    --muted: 9 83% 89%;
-    --muted-foreground: 0 0% 100%;
-
-    /* Destructive - match accent */
-    --destructive: 5 80% 57%;
+    --destructive: 356 87% 47%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Borders and inputs */
-    --border: 9 83% 89%;
-    --input: 9 83% 89%;
-    --ring: 5 80% 57%;
+    --border: 240 3% 18%; /* hairline for bare `border` in vendored components */
+    --input: 220 8% 12%;
+    --ring: 356 87% 47%;
 
-    --radius: 0.5rem;
-
-    /* Custom design tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(352 83% 28%) 0%, hsl(5 80% 57%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(5 80% 57%) 0%, hsl(352 83% 28%) 100%);
-    --gradient-dark: linear-gradient(180deg, hsl(0 0% 0%) 0%, hsl(352 83% 28%) 100%);
-    --gradient-glow: radial-gradient(ellipse at center, hsl(5 80% 57% / 0.2) 0%, transparent 70%);
-    
-    --shadow-glow: 0 0 60px hsl(352 83% 28% / 0.35);
-    --shadow-accent: 0 4px 30px hsl(5 80% 57% / 0.35);
-    --shadow-card: 0 10px 40px hsl(0 0% 0% / 0.4);
-
-    /* Geometric accent color - vivid red */
-    --geometric: 5 80% 57%;
-
-    /* Sidebar variables */
-    --sidebar-background: 0 0% 0%;
-    --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 352 83% 28%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 352 83% 28%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 9 83% 89%;
-    --sidebar-ring: 5 80% 57%;
-  }
-
-  .dark {
-    /* Dark mode matches palette */
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
-    --card: 9 83% 89%;
-    --card-foreground: 0 0% 100%;
-    --popover: 9 83% 89%;
-    --popover-foreground: 0 0% 100%;
-    --primary: 352 83% 28%;
-    --primary-foreground: 0 0% 100%;
-    --accent: 5 80% 57%;
-    --accent-foreground: 0 0% 100%;
-    --secondary: 352 83% 28%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 9 83% 89%;
-    --muted-foreground: 0 0% 100%;
-    --destructive: 5 80% 57%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 9 83% 89%;
-    --input: 9 83% 89%;
-    --ring: 5 80% 57%;
-    --sidebar-background: 0 0% 0%;
-    --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 352 83% 28%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 352 83% 28%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 9 83% 89%;
-    --sidebar-ring: 5 80% 57%;
+    /* Square. Everything. */
+    --radius: 0px;
   }
 }
 
 @layer base {
+  /* Bare `border` resolves to the hairline token instead of currentColor.
+     Own components still set their border colour explicitly. */
   * {
     @apply border-border;
   }
 
   html {
     scroll-behavior: smooth;
+    /* nav height + breathing room for anchor targets */
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Inter', sans-serif;
+    @apply bg-void text-ink font-sans antialiased;
+    font-feature-settings: "kern" 1;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    @apply bg-signal text-white;
+  }
+
+  /* Display type is set tight by default — it is only ever used for headlines. */
+  h1,
+  h2,
+  h3 {
+    @apply font-display tracking-display;
+    text-wrap: balance;
+  }
+
+  /* Visible, square focus ring. Never remove it. */
+  :focus-visible {
+    @apply outline-none ring-2 ring-signal ring-offset-2 ring-offset-void;
+  }
+
+  .on-bone :focus-visible {
+    @apply ring-offset-bone;
+  }
+
+  /* Thin, monochrome scrollbar — part of the instrument look. */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #2A2A2E transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: #26262A;
+    border: 3px solid #08090A;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: #3A3A40;
+  }
+}
+
+@layer components {
+  /* Mono micro-label: the workhorse of the whole system. */
+  .label {
+    @apply font-mono text-[0.6875rem] uppercase tracking-label;
+  }
+
+  /* Comfortable reading measure for body copy. */
+  .measure {
+    @apply max-w-[62ch];
+  }
+
+  /* Large outlined numeral used to index sections. */
+  .numeral {
+    @apply font-display font-bold leading-none text-transparent;
+    -webkit-text-stroke: 1px rgba(245, 245, 244, 0.22);
+  }
+
+  .on-bone .numeral {
+    -webkit-text-stroke: 1px rgba(8, 9, 10, 0.22);
+  }
+
+  /* Redacted value — the core visual metaphor. */
+  .redact {
+    @apply bg-signal/15 text-signal/80 px-1.5 py-0.5 font-mono text-xs;
+    text-shadow: 0 0 12px rgba(225, 16, 33, 0.35);
+  }
+
+  /* Link with a red rule that grows from the left on hover. */
+  .link-rule {
+    @apply relative transition-colors duration-150;
+  }
+
+  .link-rule::after {
+    content: "";
+    @apply absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-signal transition-transform duration-200;
+  }
+
+  .link-rule:hover::after,
+  .link-rule[data-active="true"]::after {
+    @apply scale-x-100;
   }
 }
 
 @layer utilities {
-  /* Geometric accent shapes */
-  .geometric-accent {
-    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  /* 24px dot grid, masked so it fades out instead of tiling forever. */
+  .grid-dots {
+    background-image: radial-gradient(rgba(245, 245, 244, 0.11) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: -1px -1px;
   }
 
-  /* Text gradient */
-  .text-gradient {
-    background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--primary)) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .fade-b {
+    mask-image: linear-gradient(to bottom, black 0%, black 45%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 45%, transparent 100%);
   }
 
-  /* Glow effects */
-  .glow-accent {
-    box-shadow: var(--shadow-accent);
+  .fade-x {
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
   }
 
-  .glow-primary {
-    box-shadow: var(--shadow-glow);
-  }
-
-  /* Glass morphism */
-  .glass {
-    background: hsl(var(--card) / 0.08);
-    backdrop-filter: blur(20px);
-    border: 1px solid hsl(var(--card) / 0.18);
-  }
-
-  /* Animated border gradient */
-  .border-gradient {
-    position: relative;
-    background: hsl(var(--card));
-    border-radius: var(--radius);
-  }
-
-  .border-gradient::before {
-    content: '';
-    position: absolute;
+  /* Film grain. Kills the flat-digital look that reads as generated. */
+  .grain::after {
+    content: "";
+    position: fixed;
     inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--primary)) 50%, transparent 100%);
-    -webkit-mask: 
-      linear-gradient(#fff 0 0) content-box, 
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.035;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
   }
 }
 
-/* Animations */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
+/* Kill decorative motion for anyone who asked for less of it. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
-}
+  .animate-scan,
+  .animate-marquee,
+  .animate-blink {
+    animation: none !important;
+  }
 
-@keyframes scan-line {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100vh); }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 3s ease-in-out infinite;
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
 }
