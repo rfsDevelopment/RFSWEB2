@@ -1,7 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="RFS">
   <rect width="32" height="32" fill="#08090A"/>
-  <!-- redaction bars: the mark. the top bar is the signal. -->
-  <rect x="6" y="8" width="20" height="4" fill="#E11021"/>
-  <rect x="6" y="15" width="14" height="4" fill="#F5F5F4"/>
-  <rect x="6" y="22" width="9" height="4" fill="#5E5E63"/>
+  <!-- Two redaction bars, not the three of the full logo: at 16px the third bar turns to
+       mud. The group sits inside x 7..25 / y 8..24 so Google's circular crop of the
+       favicon doesn't clip it. The top bar is the signal. -->
+  <rect x="7" y="8" width="18" height="6" fill="#E11021"/>
+  <rect x="7" y="18" width="12" height="6" fill="#F5F5F4"/>
 </svg>
